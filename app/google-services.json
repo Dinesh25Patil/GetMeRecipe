@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "953452116332",
+    "project_id": "get-me-recipe",
+    "storage_bucket": "get-me-recipe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953452116332:android:2fb508d1e3786750205b49",
+        "android_client_info": {
+          "package_name": "com.example.getmerecipe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "953452116332-ju49jobd2ta6hf343sse65vgqo1sqj37.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9lxDd3s9Da1d-_hPRl-U6pSoYy2ZgrI0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "953452116332-ju49jobd2ta6hf343sse65vgqo1sqj37.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
