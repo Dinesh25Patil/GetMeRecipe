@@ -50,14 +50,14 @@ public class RandomRecipeAdapter extends RecyclerView.Adapter<RandomRecipeAdapte
     }
 
 public static class RandomRecipeViewholder extends RecyclerView.ViewHolder{
-        CardView Cv_randomrecipe;
+        CardView Cv_random;
         TextView title;
         ImageView Iv_recipe;
 
 
     public RandomRecipeViewholder(@NonNull View itemView) {
         super(itemView);
-        Cv_randomrecipe = itemView.findViewById(R.id.Cv_randomrecipe);
+        Cv_random = itemView.findViewById(R.id.Cv_randomrecipe);
         title = itemView.findViewById(R.id.tv_title);
         Iv_recipe = itemView.findViewById(R.id.Iv_recipe);
     }

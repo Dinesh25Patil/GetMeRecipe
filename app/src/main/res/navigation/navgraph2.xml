@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navgraph2"
+    app:startDestination="@id/home_Page">
+    <fragment
+        android:id="@+id/home_Page"
+        android:name="com.example.getmerecipe.home_Page"
+        android:label="fragment_home__page"
+        tools:layout="@layout/fragment_home__page" >
+        <action
+            android:id="@+id/action_home_Page_to_search2"
+            app:destination="@id/search2" />
+        <action
+            android:id="@+id/action_home_Page_to_account4"
+            app:destination="@id/account4" />
+    </fragment>
+    <fragment
+        android:id="@+id/search2"
+        android:name="com.example.getmerecipe.search"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_search2_to_home_Page"
+            app:destination="@id/home_Page" />
+        <action
+            android:id="@+id/action_search2_to_account4"
+            app:destination="@id/account4" />
+    </fragment>
+    <fragment
+        android:id="@+id/account4"
+        android:name="com.example.getmerecipe.account"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_account4_to_search2"
+            app:destination="@id/search2" />
+        <action
+            android:id="@+id/action_account4_to_login3"
+            app:destination="@id/login3"
+            app:popUpTo="@id/account4"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/login3"
+        android:name="com.example.getmerecipe.login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+</navigation>

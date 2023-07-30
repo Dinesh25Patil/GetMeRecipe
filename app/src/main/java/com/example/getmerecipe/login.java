@@ -1,5 +1,6 @@
 package com.example.getmerecipe;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -98,7 +99,8 @@ public class login extends Fragment {
                         pgbar.setVisibility(View.GONE);
                         if (fAuth.getCurrentUser().isEmailVerified()){
                             pgbar.setVisibility(View.GONE);
-                            Navigation.findNavController(view).navigate(R.id.action_login2_to_bottomnav);
+                            Intent i = new Intent(getActivity(), MainActivity2.class);
+                            startActivity(i);
                         }
                         else{
                             pgbar.setVisibility(View.GONE);

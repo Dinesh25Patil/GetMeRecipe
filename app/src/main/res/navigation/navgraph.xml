@@ -30,42 +30,14 @@
             app:destination="@id/forgotPass"
             app:popUpTo="@id/login2" />
         <action
-            android:id="@+id/action_login2_to_bottomnav"
-            app:destination="@id/bottomnav"
-            app:popUpTo="@id/login2"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_login2_to_navgraph2"
+            app:destination="@id/navgraph2" />
     </fragment>
     <fragment
         android:id="@+id/forgotPass"
         android:name="com.example.getmerecipe.forgotPass"
         android:label="fragment_forgot_pass"
         tools:layout="@layout/fragment_forgot_pass" />
-    <fragment
-        android:id="@+id/bottomnav"
-        android:name="com.example.getmerecipe.bottomnav"
-        android:label="fragment_bottomnav"
-        tools:layout="@layout/fragment_bottomnav" >
-        <action
-            android:id="@+id/action_bottomnav_to_home_Page"
-            app:destination="@id/home_Page" />
-        <action
-            android:id="@+id/action_bottomnav_to_search2"
-            app:destination="@id/search2" />
-        <action
-            android:id="@+id/action_bottomnav_to_account2"
-            app:destination="@id/account2" />
-    </fragment>
-    <fragment
-        android:id="@+id/account2"
-        android:name="com.example.getmerecipe.account"
-        android:label="fragment_account"
-        tools:layout="@layout/fragment_account" >
-        <action
-            android:id="@+id/action_account2_to_login2"
-            app:destination="@id/login2"
-            app:popUpTo="@id/account2"
-            app:popUpToInclusive="true" />
-    </fragment>
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.getmerecipe.splashFragment"
@@ -77,19 +49,19 @@
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_splashFragment_to_bottomnav"
-            app:destination="@id/bottomnav"
-            app:popUpTo="@id/splashFragment"
+            android:id="@+id/action_splashFragment_to_navgraph2"
+            app:destination="@id/navgraph2" />
+    </fragment>
+    <include app:graph="@navigation/navgraph2" />
+    <fragment
+        android:id="@+id/account2"
+        android:name="com.example.getmerecipe.account"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_account2_to_login2"
+            app:destination="@id/login2"
+            app:popUpTo="@id/account2"
             app:popUpToInclusive="true" />
     </fragment>
-    <fragment
-        android:id="@+id/home_Page"
-        android:name="com.example.getmerecipe.home_Page"
-        android:label="fragment_home__page"
-        tools:layout="@layout/fragment_home__page" />
-    <fragment
-        android:id="@+id/search2"
-        android:name="com.example.getmerecipe.search"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
 </navigation>

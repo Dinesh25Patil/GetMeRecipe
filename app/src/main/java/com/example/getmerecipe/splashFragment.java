@@ -1,5 +1,7 @@
 package com.example.getmerecipe;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -36,13 +38,14 @@ public class splashFragment extends Fragment {
             public void run() {
                 if (fUser != null){
                     splash_pgbar.setVisibility(View.GONE);
-                    Navigation.findNavController(view).navigate(R.id.action_splashFragment_to_bottomnav);
+                    Intent i = new Intent(getActivity(), MainActivity2.class);
+                    startActivity(i);
                 }else {
                     splash_pgbar.setVisibility(View.GONE);
                     Navigation.findNavController(view).navigate(R.id.action_splashFragment_to_login2);
                 }
             }
-        }, 3500);
+        },3500);
        return view;
     }
 }

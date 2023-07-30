@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.getmerecipe.Adapters.RandomRecipeAdapter;
 import com.example.getmerecipe.Listeners.RandomRecipeResponseListener;
 import com.example.getmerecipe.Model.RandomRecipeAPIResponse;
+import com.example.getmerecipe.Model.SearchRecipeAPIResponse;
 import com.google.firebase.auth.FirebaseAuth;
 
 
@@ -40,22 +41,13 @@ public class home_Page extends Fragment {
       view = inflater.inflate(R.layout.fragment_home__page, container, false);
 
       pgBar_home = view.findViewById(R.id.pgbar_home);
+      recyclerView = view.findViewById(R.id.recyler_view);
+      recyclerView.setHasFixedSize(true);
+      recyclerView.setLayoutManager(new GridLayoutManager(context, 1));
 
       requestManager = new RequestManager(context);
       requestManager.getRandomRecipe(randomRecipeResponseListener);
       pgBar_home.setVisibility(View.VISIBLE);
-
-
-     // textView = view.findViewById(R.id.texview);
-      //fAuth = FirebaseAuth.getInstance();
-
-//      textView.setOnClickListener(new View.OnClickListener() {
-//          @Override
-//          public void onClick(View view) {
-//              fAuth.signOut();
-//              Navigation.findNavController(view).navigate(R.id.action_home_Page_to_login2);
-//          }
-//      });
 
       return view;
     }
@@ -63,9 +55,6 @@ public class home_Page extends Fragment {
         @Override
         public void didFetch(RandomRecipeAPIResponse response, String Message) {
             pgBar_home.setVisibility(View.GONE);
-            recyclerView = view.findViewById(R.id.recyler_view);
-            recyclerView.setHasFixedSize(true);
-            recyclerView.setLayoutManager(new GridLayoutManager(context, 1));
             randomRecipeAdapter = new RandomRecipeAdapter(getActivity(), response.recipes);
             recyclerView.setAdapter(randomRecipeAdapter);
         }
