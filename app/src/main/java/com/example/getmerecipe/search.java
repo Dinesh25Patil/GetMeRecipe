@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -31,30 +32,37 @@ public class search extends Fragment {
    RequestManager requestManager;
     View view;
     searchRecipeAdapter searchRecipeAdapter;
+    ProgressBar pgbar_search;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
        view = inflater.inflate(R.layout.fragment_search, container, false);
+
        searchView = view.findViewById(R.id.search_view);
-        recyclerView = view.findViewById(R.id.search_recyView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(context, 1));
+       recyclerView = view.findViewById(R.id.search_recyView);
+       pgbar_search = view.findViewById(R.id.pgbar_search);
+
+       recyclerView.setHasFixedSize(true);
+       recyclerView.setLayoutManager(new GridLayoutManager(context, 1));
 
        requestManager = new RequestManager(context);
-       requestManager.getsearchRecipe(searchRecipeResponseListener);
 
        activityMain2Binding = ActivityMain2Binding.inflate(getLayoutInflater());
 
        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
            @Override
            public boolean onQueryTextSubmit(String s) {
+               pgbar_search.setVisibility(View.VISIBLE);
                searchView.clearFocus();
-               searchText = (String) searchView.getQuery();
+               searchText =  searchView.getQuery().toString().trim();
+               requestManager.recievedata(searchText);
+               requestManager.getsearchRecipe(searchRecipeResponseListener);
+               pgbar_search.setVisibility(View.GONE);
                return false;
            }
-
            @Override
            public boolean onQueryTextChange(String s) {
 

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="5dp"
+    android:elevation="5dp"
+    android:layout_margin="10dp"
+    app:cardBackgroundColor="#F3F0E9"
+    android:id="@+id/cv_ingridents"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView_ingridents_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:textSize="15sp"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:fontFamily="@font/sregular"
+            android:textColor="@color/black"
+            android:text="Ingridents"
+            android:layout_gravity="center"
+            />
+
+        <ImageView
+            android:id="@+id/imageView_ingridents"
+            android:scaleType="center"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/textView_ingridents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:fontFamily="@font/sbold"
+            android:textColor="@color/darkblack"
+            android:text="Ingridents"
+            android:textAllCaps="true"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,10 +1,13 @@
 package com.example.getmerecipe;
 
 import android.content.Context;
+import android.widget.Toast;
 
+import com.example.getmerecipe.Listeners.RandomRecipeDetailsListener;
 import com.example.getmerecipe.Listeners.RandomRecipeResponseListener;
 import com.example.getmerecipe.Listeners.SearchRecipeResponseListener;
 import com.example.getmerecipe.Model.RandomRecipeAPIResponse;
+import com.example.getmerecipe.Model.RandomRecipeDetailsResponse;
 import com.example.getmerecipe.Model.SearchRecipeAPIResponse;
 
 import retrofit2.Call;
@@ -13,9 +16,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public class RequestManager {
+    search search;
+    String data_from;
     Context context;
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://api.spoonacular.com/")
@@ -46,9 +52,29 @@ public class RequestManager {
         });
     }
 
+    public void getRecipeDetails(RandomRecipeDetailsListener listener, int id){
+        recipe_detail recipe_detail = retrofit.create(RequestManager.recipe_detail.class);
+        Call<RandomRecipeDetailsResponse> call = recipe_detail.callrecipedetails(id, "8da6f12796dc4417bbca918b997d69bb");
+        call.enqueue(new Callback<RandomRecipeDetailsResponse>() {
+            @Override
+            public void onResponse(Call<RandomRecipeDetailsResponse> call, Response<RandomRecipeDetailsResponse> response) {
+                if(!response.isSuccessful()){
+                    listener.didError(response.message());
+                    return;
+                }
+                listener.didFetch(response.body(), response.message());
+            }
+
+            @Override
+            public void onFailure(Call<RandomRecipeDetailsResponse> call, Throwable t) {
+                listener.didError(t.getMessage());
+            }
+        });
+    }
+
     public void getsearchRecipe(SearchRecipeResponseListener listener){
         search_recipe search_recipe = retrofit.create(RequestManager.search_recipe.class);
-        Call<SearchRecipeAPIResponse> call = search_recipe.callsearchRecipe("8da6f12796dc4417bbca918b997d69bb", "pizza");
+        Call<SearchRecipeAPIResponse> call = search_recipe.callsearchRecipe("8da6f12796dc4417bbca918b997d69bb", data_from);
         call.enqueue(new Callback<SearchRecipeAPIResponse>() {
             @Override
             public void onResponse(Call<SearchRecipeAPIResponse> call, Response<SearchRecipeAPIResponse> response) {
@@ -67,6 +93,10 @@ public class RequestManager {
         });
     }
 
+    public void recievedata(String data){
+        data_from = data;
+    }
+
     private interface random_recipe{
         @GET("recipes/random")
         Call<RandomRecipeAPIResponse> callRandomRecipe(
@@ -81,5 +111,14 @@ public class RequestManager {
             @Query("apiKey") String apiKey,
             @Query("query") String query
         );
+    }
+
+    private interface recipe_detail{
+        @GET("recipes/{id}/information")
+        Call<RandomRecipeDetailsResponse> callrecipedetails(
+              @Path("id") int id,
+              @Query("apiKey") String apiKey
+        );
+
     }
 }

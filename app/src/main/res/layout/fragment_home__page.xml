@@ -10,13 +10,32 @@
     
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+<com.google.android.material.appbar.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        app:title="Home"
+        app:titleMarginStart="40dp"
+        android:background="@drawable/toolbar_shape"
+        app:titleTextColor="@color/darkblack"
+        android:textAlignment="center"/>
+
+</com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp" />
+            android:layout_margin="10dp" />
     </LinearLayout>
 
     <ProgressBar
