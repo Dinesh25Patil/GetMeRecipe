@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SearchRecipeDetails">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarrecipe"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            app:title="Recipe Details"
+            app:titleMarginStart="40dp"
+            android:background="@drawable/toolbar_shape"
+            app:titleTextColor="@color/darkblack"
+            android:textAlignment="center"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <ProgressBar
+                android:id="@+id/pgbar_searchdetails"
+                android:layout_marginTop="10dp"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/orange"
+                android:visibility="gone"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/search_recipe_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:fontFamily="@font/sbold"
+                android:textColor="@color/darkblack"
+                android:textSize="25sp"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/search_recipe_source"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="2dp"
+                android:fontFamily="@font/sregular"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_gravity="center"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp"
+                android:layout_margin="10dp"
+                android:padding="2dp">
+
+                <ImageView
+                    android:id="@+id/search_recipe_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_gravity="center"
+                    android:padding="2dp"
+                    android:scaleType="centerCrop"
+                    />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="INSTRUCTIONS"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:padding="5dp"
+                android:fontFamily="@font/sbold"
+                android:textColor="@color/darkblack"
+                android:textSize="22sp"
+                android:layout_gravity="center"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp"
+                app:cardBackgroundColor="#F3F0E9"
+                android:layout_margin="10dp"
+                android:padding="2dp">
+
+                <TextView
+                    android:id="@+id/search_recipe_meal_instructions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#F3F0E9"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:padding="2dp"
+                    android:fontFamily="@font/sregular"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:gravity="start"
+                    android:textAlignment="viewStart"
+                    android:ellipsize="end"
+                    android:singleLine="false"
+                    android:lineSpacingExtra="5dp"
+                    android:layout_gravity="center"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="INGREDIENTS"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:fontFamily="@font/sbold"
+                android:textColor="@color/darkblack"
+                android:textSize="22sp"
+                android:layout_gravity="center"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/search_ingrdients_rcv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="5dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="#F3F0E9"
+    app:cardBackgroundColor="#F8EBAF72"
     android:id="@+id/Cv_randomrecipe"
     app:cardCornerRadius="5dp"
     app:cardElevation="5dp"
@@ -22,11 +22,12 @@
             android:scrollHorizontally="true"
             android:singleLine="true"
             android:ellipsize="marquee"
-            android:textColor="@color/black"
+            android:textColor="@color/darkblack"
             android:textSize="20sp"
             android:padding="10dp"
             android:fontFamily="@font/ssbold"
             android:id="@+id/tv_title"/>
+
         <ImageView
             android:id="@+id/Iv_recipe"
             android:layout_width="match_parent"

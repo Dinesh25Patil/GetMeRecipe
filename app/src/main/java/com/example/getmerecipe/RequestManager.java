@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import com.example.getmerecipe.Listeners.RandomRecipeDetailsListener;
 import com.example.getmerecipe.Listeners.RandomRecipeResponseListener;
+import com.example.getmerecipe.Listeners.SearchRecipeDetailsListener;
 import com.example.getmerecipe.Listeners.SearchRecipeResponseListener;
 import com.example.getmerecipe.Model.RandomRecipeAPIResponse;
 import com.example.getmerecipe.Model.RandomRecipeDetailsResponse;
@@ -93,6 +94,26 @@ public class RequestManager {
         });
     }
 
+    public void getsearch_recipe_details(SearchRecipeDetailsListener listener, int id){
+        search_recipe_details search_recipe_details = retrofit.create(RequestManager.search_recipe_details.class);
+        Call<RandomRecipeDetailsResponse> call = search_recipe_details.callSearchrecipeDetails(id, "8da6f12796dc4417bbca918b997d69bb");
+        call.enqueue(new Callback<RandomRecipeDetailsResponse>() {
+            @Override
+            public void onResponse(Call<RandomRecipeDetailsResponse> call, Response<RandomRecipeDetailsResponse> response) {
+                if(!response.isSuccessful()){
+                    listener.didError(response.message());
+                    return;
+                }
+                listener.didFetch(response.body(), response.message());
+            }
+
+            @Override
+            public void onFailure(Call<RandomRecipeDetailsResponse> call, Throwable t) {
+                listener.didError(t.getMessage());
+            }
+        });
+    }
+
     public void recievedata(String data){
         data_from = data;
     }
@@ -120,5 +141,13 @@ public class RequestManager {
               @Query("apiKey") String apiKey
         );
 
+    }
+
+    private interface search_recipe_details{
+        @GET("recipes/{id}/information")
+        Call<RandomRecipeDetailsResponse> callSearchrecipeDetails(
+                @Path("id") int id,
+                @Query("apiKey") String apiKey
+        );
     }
 }

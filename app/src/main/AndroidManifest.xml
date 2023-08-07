@@ -17,6 +17,9 @@
         android:theme="@style/Theme.GetMeRecipe"
         tools:targetApi="31">
         <activity
+            android:name=".SearchRecipeDetails"
+            android:exported="false" />
+        <activity
             android:name=".RandomRecipeDetails"
             android:exported="false" />
         <activity

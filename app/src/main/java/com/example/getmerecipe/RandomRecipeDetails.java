@@ -47,6 +47,7 @@ public class RandomRecipeDetails extends AppCompatActivity {
         recipe_source = findViewById(R.id.recipe_source);
         recipe_meal_summary = findViewById(R.id.recipe_meal_summary);
         ingrdients_rcv = findViewById(R.id.ingrdients_rcv);
+        pgbar_details = findViewById(R.id.pgbar_details);
     }
 
     private final RandomRecipeDetailsListener randomRecipeDetailsListener = new RandomRecipeDetailsListener() {
@@ -68,6 +69,7 @@ public class RandomRecipeDetails extends AppCompatActivity {
 
         }
 
+        // Method to remove the unnecessary tags
         private String removeTags(String text) {
             text = text.replaceAll("<ol>", "");
             text = text.replaceAll("</ol>", "");

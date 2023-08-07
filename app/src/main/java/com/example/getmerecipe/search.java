@@ -1,6 +1,7 @@
 package com.example.getmerecipe;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.getmerecipe.Adapters.RandomRecipeAdapter;
 import com.example.getmerecipe.Adapters.searchRecipeAdapter;
+import com.example.getmerecipe.Listeners.SearchRecipeClickListener;
 import com.example.getmerecipe.Listeners.SearchRecipeResponseListener;
 import com.example.getmerecipe.Model.SearchRecipeAPIResponse;
 import com.example.getmerecipe.databinding.ActivityMain2Binding;
@@ -75,12 +77,20 @@ public class search extends Fragment {
     private final SearchRecipeResponseListener searchRecipeResponseListener  = new SearchRecipeResponseListener() {
         @Override
         public void gotResult(SearchRecipeAPIResponse searchRecipeAPIResponse, String Msg) {
-            searchRecipeAdapter = new searchRecipeAdapter(getActivity(), searchRecipeAPIResponse.results);
+            searchRecipeAdapter = new searchRecipeAdapter(getActivity(), searchRecipeAPIResponse.results, listener);
             recyclerView.setAdapter(searchRecipeAdapter);
         }
         @Override
         public void gotError(String Msg) {
             Toast.makeText(context, Msg, Toast.LENGTH_SHORT).show();
+        }
+    };
+    private final SearchRecipeClickListener listener = new SearchRecipeClickListener() {
+        @Override
+        public void onSearchRecipeClicked(String Id) {
+            Intent i = new Intent(getActivity(), SearchRecipeDetails.class);
+            i.putExtra("id", Id);
+            startActivity(i);
         }
     };
 

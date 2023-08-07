@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.getmerecipe.Listeners.SearchRecipeClickListener;
 import com.example.getmerecipe.Model.Result;
 import com.example.getmerecipe.R;
 import com.squareup.picasso.Picasso;
@@ -21,10 +22,12 @@ public class searchRecipeAdapter extends RecyclerView.Adapter<searchRecipeAdapte
 
     Context context;
     List<Result> resultList;
+    SearchRecipeClickListener listener;
 
-    public searchRecipeAdapter(Context context, List<Result> resultList) {
+    public searchRecipeAdapter(Context context, List<Result> resultList, SearchRecipeClickListener listener) {
         this.context = context;
         this.resultList = resultList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -39,6 +42,13 @@ public class searchRecipeAdapter extends RecyclerView.Adapter<searchRecipeAdapte
         holder.search_title.setText(resultList.get(position).title);
         holder.search_title.setSelected(true);
         Picasso.get().load(resultList.get(position).image).into(holder.search_Iv_recipe);
+
+        holder.Cv_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onSearchRecipeClicked(String.valueOf(resultList.get(holder.getAdapterPosition()).id));
+            }
+        });
     }
 
     @Override
